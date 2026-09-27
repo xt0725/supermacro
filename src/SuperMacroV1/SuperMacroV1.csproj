@@ -8,9 +8,9 @@
     <Nullable>enable</Nullable>
     <AssemblyName>SuperMacroV1</AssemblyName>
     <RootNamespace>SuperMacroV1</RootNamespace>
-    <Version>1.0.3</Version>
-    <AssemblyVersion>1.0.3.0</AssemblyVersion>
-    <FileVersion>1.0.3.0</FileVersion>
+    <Version>1.1.0</Version>
+    <AssemblyVersion>1.1.0.0</AssemblyVersion>
+    <FileVersion>1.1.0.0</FileVersion>
     <ApplicationManifest>app.manifest</ApplicationManifest>
     <PublishSingleFile>true</PublishSingleFile>
     <SelfContained>true</SelfContained>
@@ -21,7 +21,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="../../assets/DistroStudios.png" LogicalName="SuperMacroV1.DistroStudios.png" />
+    <EmbeddedResource Include="../../assets/XT07.png" LogicalName="SuperMacroV1.XT07.png" />
+    <EmbeddedResource Include="app.ico" LogicalName="SuperMacroV1.app.ico" />
   </ItemGroup>
 
 </Project>

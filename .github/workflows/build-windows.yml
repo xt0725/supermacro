@@ -3,6 +3,7 @@ name: Build Windows Installer
 on:
   push:
     branches: [main]
+  pull_request:
   workflow_dispatch:
 
 permissions:
@@ -26,19 +27,8 @@ jobs:
       - name: Installer les outils Windows
         shell: pwsh
         run: |
-          if (-not (Get-Command magick -ErrorAction SilentlyContinue)) {
-            choco install imagemagick.app -y --no-progress
-          }
           if (-not (Test-Path "${env:ProgramFiles(x86)}\Inno Setup 6\ISCC.exe")) {
             choco install innosetup -y --no-progress
-          }
-
-      - name: Créer l'icône depuis le logo
-        shell: pwsh
-        run: |
-          magick assets/DistroStudios.png -background none -define icon:auto-resize=256,128,64,48,32,16 src/SuperMacroV1/app.ico
-          if (-not (Test-Path "src/SuperMacroV1/app.ico")) {
-            throw "La création de l'icône a échoué."
           }
 
       - name: Compiler l'application
