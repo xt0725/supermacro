@@ -2,7 +2,6 @@
 **/obj/
 dist/
 installer/output/
-src/SuperMacroV1/app.ico
 *.user
 *.suo
 .vs/
