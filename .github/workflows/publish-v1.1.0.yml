@@ -1,0 +1,32 @@
+name: Publish SuperMacroV1 v1.1.0
+
+on:
+  push:
+    branches: [main]
+    paths:
+      - .github/workflows/publish-v1.1.0.yml
+
+permissions:
+  actions: read
+  contents: write
+
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Download successful Windows installer
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh run download 36321607451 --repo xt0725/supermacro --name SuperMacroV1-Installer --dir release-assets
+          test -s release-assets/SuperMacroV1-Setup.exe
+
+      - name: Publish v1.1.0
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create v1.1.0 release-assets/SuperMacroV1-Setup.exe \
+            --repo xt0725/supermacro \
+            --target bebf9938d05d493459a916c3a2dee71229ca95e8 \
+            --title "SuperMacroV1 v1.1.0" \
+            --notes "Nouvelle interface By XT.07 avec le logo actualisé. La fonction Blox Fruits et le sélecteur de mode d'activation ont été retirés. Le filtre est affiché sous « Filtrer les clients ». L'interface propose l'anglais par défaut, le français et l'espagnol. Le raccourci d'activation fonctionne en bascule et F12 reste l'arrêt d'urgence."
